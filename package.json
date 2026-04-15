@@ -1,0 +1,30 @@
+{
+  "name": "notas-estudiantiles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch index.js",
+    "build": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/10Oliver/notas-estudiantiles.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/10Oliver/notas-estudiantiles/issues"
+  },
+  "homepage": "https://github.com/10Oliver/notas-estudiantiles#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.22.0",
+    "sequelize": "^6.37.8"
+  }
+}
