@@ -5,7 +5,7 @@ const getAllUsers = async (_req, res) => {
     const users = await User.findAll();
     res.status(200).json(users);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to retrieve users' });
+    res.status(500).json({ error: 'Error al obtener usuarios' });
   }
 }
 
@@ -16,10 +16,10 @@ const getUserById = async (req, res) => {
     if (user) {
       res.status(200).json(user);
     } else {
-      res.status(404).json({ error: 'User not found' });
+      res.status(404).json({ error: 'Usuario no encontrado' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Failed to retrieve user' });
+    res.status(500).json({ error: 'Error al obtener el usuario' });
   }
 }
 

@@ -32,11 +32,6 @@ const swaggerOptions = {
         },
       },
     },
-    security: [
-      {
-        bearerAuth: [],
-      },
-    ],
   },
   apis: ['./routes/*.js'],
 };

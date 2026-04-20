@@ -27,6 +27,14 @@ const User = db.define('User', {
   },
 },
 {
+  defaultScope: {
+    attributes: { exclude: ['password'] },
+  },
+  scopes: {
+    withPassword: {
+      attributes: { include: ['password'] },
+    },
+  },
   timestamps: true,
   hooks: {
     beforeCreate: async (user) => {
