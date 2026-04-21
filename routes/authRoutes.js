@@ -65,8 +65,12 @@ const { validateRegister, validateLogin } = require('../middlewares/validationMi
  *             schema:
  *               type: object
  *               properties:
- *                 error:
+ *                 status:
  *                   type: string
+ *                   example: "error"
+ *                 message:
+ *                   type: string
+ *                   example: "Error interno del servidor"
  */
 router.post('/register', validateRegister, authController.registerUser);
 
@@ -134,8 +138,12 @@ router.post('/register', validateRegister, authController.registerUser);
  *             schema:
  *               type: object
  *               properties:
- *                 error:
+ *                 status:
  *                   type: string
+ *                   example: "error"
+ *                 message:
+ *                   type: string
+ *                   example: "Error interno del servidor"
  */
 router.post('/login', validateLogin, authController.loginUser);
 
@@ -183,8 +191,12 @@ router.post('/login', validateLogin, authController.loginUser);
  *             schema:
  *               type: object
  *               properties:
- *                 error:
+ *                 status:
  *                   type: string
+ *                   example: "error"
+ *                 message:
+ *                   type: string
+ *                   example: "Error interno del servidor"
  */
 router.get('/profile', authMiddleware, authController.getProfile);
 

@@ -5,7 +5,7 @@ const createToken = (user) => {
   return jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
 }
 
-const loginUser = async (req, res) => {
+const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.scope('withPassword').findOne({ where: { email } });
@@ -19,11 +19,11 @@ const loginUser = async (req, res) => {
     const token = createToken(user);
     res.status(200).json({ token });
   } catch (error) {
-    res.status(500).json({ error: 'Error al iniciar sesión' });
+    next(error);
   }
 }
 
-const registerUser = async (req, res) => {
+const registerUser = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
     const newUser = await User.create({ username, email, password });
@@ -31,12 +31,11 @@ const registerUser = async (req, res) => {
     delete userResponse.password;
     res.status(201).json(userResponse);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al registrar usuario' });
+    next(error);
   }
 }
 
-const getProfile = async (req, res) => {
+const getProfile = async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.id);
     if (user) {
@@ -45,7 +44,7 @@ const getProfile = async (req, res) => {
       res.status(404).json({ error: 'Usuario no encontrado' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Error al obtener el perfil del usuario' });
+    next(error);
   }
 }
 

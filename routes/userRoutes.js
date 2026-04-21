@@ -39,8 +39,12 @@ const { getAllUsers, getUserById } = require('../controllers/userController');
  *             schema:
  *               type: object
  *               properties:
- *                 error:
+ *                 status:
  *                   type: string
+ *                   example: "error"
+ *                 message:
+ *                   type: string
+ *                   example: "Error interno del servidor"
  */
 router.get('/', authMiddleware, getAllUsers);
 
@@ -96,8 +100,12 @@ router.get('/', authMiddleware, getAllUsers);
  *             schema:
  *               type: object
  *               properties:
- *                 error:
+ *                 status:
  *                   type: string
+ *                   example: "error"
+ *                 message:
+ *                   type: string
+ *                   example: "Error interno del servidor"
  */
 router.get('/:id', authMiddleware, getUserById);
 
