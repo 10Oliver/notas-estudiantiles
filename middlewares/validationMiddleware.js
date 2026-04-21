@@ -39,7 +39,24 @@ const validateLogin = [
   handleValidationErrors
 ];
 
+const validateGrades = [
+  body('grades')
+    .isArray({ min: 3 })
+    .withMessage('Se requiere un arreglo "grades" de al menos 3 notas'),
+  body('grades.*')
+    .isFloat({ min: 0, max: 10 })
+    .withMessage('Cada nota debe ser un número entre 0 y 10')
+    .custom((value) => {
+      if (!/^\d+(\.\d{1,2})?$/.test(value.toString())) {
+        throw new Error('Cada nota debe tener como máximo 2 decimales');
+      }
+      return true;
+    }),
+  handleValidationErrors
+];
+
 module.exports = {
   validateRegister,
-  validateLogin
+  validateLogin,
+  validateGrades
 };

@@ -4,6 +4,7 @@ const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
+const gradeRoutes = require('./routes/gradeRoutes');
 
 dotenv.config();
 const app = express();
@@ -45,6 +46,7 @@ app.use(express.json());
 // Rutas
 app.use('/users', userRoutes);
 app.use('/auth', authRoutes);
+app.use('/grades', gradeRoutes);
 
 // Middleware de manejo de errores global
 app.use((err, req, res, next) => {
